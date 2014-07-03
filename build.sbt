@@ -5,7 +5,7 @@ import sbt.Keys._
 import sbtrelease.ReleaseStateTransformations._
 import sbtrelease._
 
-name := "web-automation-core-scala-signin"
+name := "scala-automation-web-signin"
 
 organization := "com.gu"
 
@@ -19,8 +19,8 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   //"org.scalatest" % "scalatest_2.10" % "2.0",
   //"com.typesafe.play" %% "play-ws" % "2.3.0"
-  "com.gu" %% "web-automation-core-scala" % "1.21",
-"com.gu" %% "web-automation-core-scala-api" % "1.2"
+  "com.gu" %% "scala-automation" % "1.22",
+"com.gu" %% "scala-automation-api-client" % "1.0"
 )
 
 releaseSettings
@@ -30,12 +30,12 @@ sonatypeSettings
 description := "let us add the guardian login cookies to webdriver"
 
 scmInfo := Some(ScmInfo(
-  url("https://github.com/guardian/scala-automation/modules/signin"),
-  "scm:git:git@github.com:guardian/scala-automation.git"
+  url("https://github.com/guardian/scala-automation-web-signin"),
+  "scm:git:git@github.com:guardian/scala-automation-web-signin.git"
 ))
 
 pomExtra := (
-  <url>https://github.com/guardian/scala-automation</url>
+  <url>https://github.com/guardian/scala-automation-web-signin</url>
     <developers>
       <developer>
         <id>johnduffell</id>
@@ -61,7 +61,7 @@ ReleaseKeys.releaseProcess := Seq[ReleaseStep](
   runTest,
   setReleaseVersion,
   commitReleaseVersion,
-//  tagRelease,
+  tagRelease,
   ReleaseStep( // instead of publishArtifacts
     action = state => Project.extract(state).runTask(PgpKeys.publishSigned, state)._1,
     enableCrossBuild = true
