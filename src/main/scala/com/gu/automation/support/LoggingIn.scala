@@ -1,6 +1,8 @@
 package com.gu.automation.support
 
 import com.gu.automation.api.AuthApi
+import org.openqa.selenium.{Cookie, WebDriver}
+import scala.concurrent.duration._
 
 import scala.concurrent.Await
 ;
