@@ -25,10 +25,10 @@ trait LoggingIn {
     }
   }
 
-  def logInToGUPage[P](goto: () => P, user: Option[String] = None)(implicit driver: WebDriver): P = {
-    goto()
+  def logInToGUPage[P](goto: => P, user: Option[String] = None)(implicit driver: WebDriver): P = {
+    goto
     addGULoginCookies(user)
-    goto()
+    goto
   }
 
 }
