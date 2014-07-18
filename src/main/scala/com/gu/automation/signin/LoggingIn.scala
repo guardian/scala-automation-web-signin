@@ -8,7 +8,9 @@ import scala.concurrent.Await
 ;
 
 /**
- * Created by jduffell on 20/06/2014.
+ * Example:
+ *
+ * logInToGUPage(ExamplePage.goto(), Some("user"))
  */
 trait LoggingIn {
 
