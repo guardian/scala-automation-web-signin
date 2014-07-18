@@ -1,13 +1,12 @@
-web-automation-core-scala-api
+scala-automation-web-signin
 -----------------------------
 To use this just edit your build.sbt as follows:
 
 libraryDependencies ++= Seq(
-  "com.gu" %% "web-automation-core-scala-api" % "1.0-SNAPSHOT"
+  "com.gu" %% "scala-automation-web-signin" % "1.xxx"
 )
 
-AuthApi
--------
-From your code, you can import com.gu.automation.api.AuthApi and then do something like
+Add something to your conf file e.g. for CODE
+"idApiRoot" : "https://idapi.code.dev-theguardian.com"
 
-    val future = AuthApi.authenticate(email, password)
+See the example code in LoggingInTest

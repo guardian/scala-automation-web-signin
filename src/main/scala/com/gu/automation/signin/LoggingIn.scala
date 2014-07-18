@@ -8,7 +8,9 @@ import scala.concurrent.Await
 ;
 
 /**
- * Created by jduffell on 20/06/2014.
+ * Example:
+ *
+ * logInToGUPage(ExamplePage.goto(), Some("user"))
  */
 trait LoggingIn {
 
@@ -25,10 +27,10 @@ trait LoggingIn {
     }
   }
 
-  def logInToGUPage[P](goto: () => P, user: Option[String] = None)(implicit driver: WebDriver): P = {
-    goto()
+  def logInToGUPage[P](goto: => P, user: Option[String] = None)(implicit driver: WebDriver): P = {
+    goto
     addGULoginCookies(user)
-    goto()
+    goto
   }
 
 }
