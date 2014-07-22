@@ -1,7 +1,6 @@
 package com.gu.automation.signin
 
 import com.gu.automation.core.WebDriverFeatureSpec
-import com.gu.automation.support.LogIn
 import org.scalatest.Matchers
 
 class LoggingInTest extends WebDriverFeatureSpec with Matchers {
@@ -9,14 +8,6 @@ class LoggingInTest extends WebDriverFeatureSpec with Matchers {
     info("Tests for the API Logging in function")
 
     feature("should be able to log in to the browser") {
-
-      scenario("check we can get the right cookie domains") { _ =>
-
-        LogIn.getCookieDomain("http://www.theguardian.com/uk") should be (".theguardian.com")
-        LogIn.getCookieDomain("https://www.theguardian.com/uk") should be (".theguardian.com")
-        LogIn.getCookieDomain("https://m.code.dev-theguardian.com/") should be (".code.dev-theguardian.com")
-
-      }
 
       // could add another test with a fake AuthApi checking the cookies really are set
 
@@ -34,7 +25,7 @@ class LoggingInTest extends WebDriverFeatureSpec with Matchers {
        * browser: chrome
 
        */
-      // REMOVED because it can't run in the jenkins env, and we can't run sbt 'test-only -- -l needsBrowser' from the sbt-release task easily
+      //REMOVED because it can't run in the jenkins env, and we can't run sbt 'test-only -- -l needsBrowser' from the sbt-release task easily
 //      scenarioWeb("check we are logged in when we have added the cookies", Tag("needsBrowser")) { implicit driver: WebDriver =>
 //
 //        LogIn("memberLogin")
@@ -44,6 +35,6 @@ class LoggingInTest extends WebDriverFeatureSpec with Matchers {
 //        val userSpan = driver.findElement(By.xpath("//div[@data-component='identity-profile']")).findElement(By.className("js-profile-info"))
 //        userSpan.getText should be ("Reg Idtester")
 //      }
-    }
+   }
 
 }
