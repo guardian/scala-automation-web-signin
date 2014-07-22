@@ -25,7 +25,7 @@ class LoggingInTest extends WebDriverFeatureSpec with Matchers {
        * browser: chrome
 
        */
-      //REMOVED because it can't run in the jenkins env, and we can't run sbt 'test-only -- -l needsBrowser' from the sbt-release task easily
+      // REMOVED because it can't run in the jenkins env, and we can't run sbt 'test-only -- -l needsBrowser' from the sbt-release task easily
 //      scenarioWeb("check we are logged in when we have added the cookies", Tag("needsBrowser")) { implicit driver: WebDriver =>
 //
 //        LogIn("memberLogin")
@@ -35,6 +35,6 @@ class LoggingInTest extends WebDriverFeatureSpec with Matchers {
 //        val userSpan = driver.findElement(By.xpath("//div[@data-component='identity-profile']")).findElement(By.className("js-profile-info"))
 //        userSpan.getText should be ("Reg Idtester")
 //      }
-   }
+    }
 
 }

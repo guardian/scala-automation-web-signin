@@ -1,7 +1,7 @@
 package com.gu.automation.support
 
 import com.gu.automation.api.AuthApi
-import org.openqa.selenium.{WebDriver}
+import org.openqa.selenium.WebDriver
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
@@ -11,8 +11,8 @@ import scala.concurrent.duration._
  * Example: if your local.conf contains:
  *
  * userName: {
- * loginEmail: "asdf@theguardian.com"
- * loginPassword: passw0rd
+ *   loginEmail: "asdf@theguardian.com"
+ *   loginPassword: passw0rd
  * }
  *
  * You would do this code:
