@@ -27,12 +27,12 @@ object LogIn {
     """http(s?)://([^.]*(\.))?([^/]+).*$""".r.replaceAllIn(url, "$3$4")
 
   def apply()(implicit driver: WebDriver) = {
-    apply(None, driver)
+    logIn(None, driver)
   }
   def apply(user: String)(implicit driver: WebDriver) = {
-    apply(Some(user), driver)
+    logIn(Some(user), driver)
   }
-  private def apply(user: Option[String], driver: WebDriver) = {
+  private def logIn(user: Option[String], driver: WebDriver) = {
     val idApiRoot = Config().getIdApiRoot()
     val loginEmail = Config().getLoginEmail(user)
     val loginPassword = Config().getLoginPassword(user)
