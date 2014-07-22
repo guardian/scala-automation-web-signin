@@ -26,7 +26,13 @@ object LogIn {
   def getCookieDomain(url: String) =
     """http(s?)://([^.]*(\.))?([^/]+).*$""".r.replaceAllIn(url, "$3$4")
 
-  def apply(user: Option[String])(implicit driver: WebDriver) = {
+  def apply()(implicit driver: WebDriver) = {
+    apply(None, driver)
+  }
+  def apply(user: String)(implicit driver: WebDriver) = {
+    apply(Some(user), driver)
+  }
+  private def apply(user: Option[String], driver: WebDriver) = {
     val idApiRoot = Config().getIdApiRoot()
     val loginEmail = Config().getLoginEmail(user)
     val loginPassword = Config().getLoginPassword(user)
@@ -37,8 +43,11 @@ object LogIn {
 
     val future = AuthApi(idApiRoot).authenticate(loginEmail, loginPassword)
 
-    val accessToken = Await.result(future, 30.seconds)
-    val cookies = accessToken match { case Right(cookies) => cookies }
+    val accessToken = Await.result(future, 10.seconds)
+    val cookies = accessToken match {
+      case Right(cookies) => cookies
+      case Left(error) => throw new RuntimeException(s"authenticate $loginEmail failed: $error")
+    }
     cookies.foreach {
       case (key, value) =>
         val isSecure = key.startsWith("SC_")

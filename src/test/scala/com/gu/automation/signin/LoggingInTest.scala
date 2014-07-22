@@ -14,20 +14,32 @@ class LoggingInTest extends WebDriverFeatureSpec with Matchers {
       scenario("check we can get the right cookie domains") { _ =>
 
         LogIn.getCookieDomain("http://www.theguardian.com/uk") should be (".theguardian.com")
-        LogIn.getCookieDomain("http://localhost:9000/") should be ("localhost:9000")
         LogIn.getCookieDomain("https://www.theguardian.com/uk") should be (".theguardian.com")
         LogIn.getCookieDomain("https://m.code.dev-theguardian.com/") should be (".code.dev-theguardian.com")
 
       }
 
+      // could add another test with a fake AuthApi checking the cookies really are set
+
       /**
-       * scenarioWeb handles starting and stopping the browser, you will have to declare an implicit driver as shown
+       * This is an end to end test that we really end up logged in.
+       *
+       * To pass it needs a local.conf containing something like
+       *
+       * "idApiRoot" : "https://idapi.code.dev-theguardian.com"
+       * testBaseUrl: "http://m.code.dev-theguardian.com"
+       * memberLogin: {
+       *   "loginEmail" : "regidqa@gmail.com"
+       *   "loginPassword" : "ask_gwyn!"
+       * }
+       * browser: chrome
+
        */
       scenarioWeb("check we are logged in when we have added the cookies") { implicit driver: WebDriver =>
 
-        LogIn(Some("memberLogin"))
-//       ExamplePage.goto()
+        LogIn("memberLogin")
 
+        // now go to a URL where we are probably logged in
         driver.get(Config().getTestBaseUrl())
         val userSpan = driver.findElement(By.xpath("//div[@data-component='identity-profile']")).findElement(By.className("js-profile-info"))
         userSpan.getText should be ("Reg Idtester")
