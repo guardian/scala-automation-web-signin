@@ -21,7 +21,7 @@ import scala.concurrent.duration._
  * ExamplePage.goto()
  *
  */
-object LogIn extends CookieManager {
+object LogIn {
 
   def apply()(implicit driver: WebDriver) = {
     logIn(None, driver)
@@ -42,7 +42,7 @@ object LogIn extends CookieManager {
       case Left(error) => throw new RuntimeException(s"authenticate $loginEmail failed: $error")
     }
 
-    addCookies(driver, cookies)
+    CookieManager.addCookies(driver, cookies)
 
   }
 
