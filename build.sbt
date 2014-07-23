@@ -19,7 +19,7 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   //"org.scalatest" % "scalatest_2.10" % "2.0",
   //"com.typesafe.play" %% "play-ws" % "2.3.0"
-  "com.gu" %% "scala-automation" % "1.18",
+  "com.gu" %% "scala-automation" % "1.21",
 "com.gu" %% "scala-automation-api-client" % "1.0"
 )
 
