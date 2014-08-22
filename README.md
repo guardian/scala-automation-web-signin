@@ -9,4 +9,4 @@ libraryDependencies ++= Seq(
 Add something to your conf file e.g. for CODE
 "idApiRoot" : "https://idapi.code.dev-theguardian.com"
 
-See the example code in LoggingInTest
+See the (currently commented out) example code in [LoggingInTest](src/test/scala/com/gu/automation/signin/LoggingInTest.scala)
