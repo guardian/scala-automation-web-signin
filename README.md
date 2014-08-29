@@ -8,7 +8,7 @@ libraryDependencies ++= Seq(
   "com.gu" %% "scala-automation-web-signin" % "1.xxx"
 )
 
-Then add the following to your scala test configuration (see [Scala Test Automation](https://github.com/guardian/scala-automation):
+Then add the following to your scala test configuration (see the [Scala Test Automation Framework](https://github.com/guardian/scala-automation)):
 
 ```
 "idApiRoot" : "https://idapi.code.dev-theguardian.com"
